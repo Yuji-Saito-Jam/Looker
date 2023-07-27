@@ -19,12 +19,12 @@ view: players {
     timeframes: [raw, date, week, month, quarter, year]
     convert_tz: no
     datatype: date
-    sql: dateadd(year , datediff(year, ${birth_raw}, getdate()), ${birth_raw})   ;;
+    sql: dateadd(year , datediff(date, ${birth_raw}, getdate()), ${birth_raw})   ;;
   }
   dimension: next_birthday {
     type: duration_day
     sql_start: getdate();;
-    sql_end: ${this_y_birth_date};;
+    sql_end: ${this_y_birth_date}+1;;
   }
   dimension: club {
     type: string
