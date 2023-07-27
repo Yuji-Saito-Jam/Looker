@@ -16,8 +16,8 @@ view: players {
   }
   dimension: next_birthday {
     type: duration_day
-    sql_start: now();;
-    sql_end: ${birth_date};;
+    sql_start: getdate();;
+    sql_end: ${birth_raw};;
   }
   dimension: club {
     type: string
