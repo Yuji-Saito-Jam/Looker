@@ -26,6 +26,11 @@ view: players {
     type: number
     sql: ${TABLE}."HEIGHT" ;;
   }
+  dimension: name_position {
+    type: string
+    sql:  ${name} || ','||${position};;
+  }
+
   dimension: name {
     type: string
     sql: ${TABLE}."NAME" ;;
