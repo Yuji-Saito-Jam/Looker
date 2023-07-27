@@ -19,7 +19,7 @@ view: players {
     timeframes: [raw, date, week, month, quarter, year]
     convert_tz: no
     datatype: date
-    sql: dateadd(year , datediff(date, ${birth_raw}, getdate()), ${birth_raw})   ;;
+    sql: dateadd(year , datediff(day, ${birth_raw}, getdate()), ${birth_raw})   ;;
   }
   dimension: next_birthday {
     type: duration_day
