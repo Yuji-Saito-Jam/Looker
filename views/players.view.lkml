@@ -14,6 +14,11 @@ view: players {
     datatype: date
     sql: ${TABLE}."BIRTH" ;;
   }
+  dimension: next_birthday {
+    type: duration_day
+    sql_start: now();;
+    sql_end: ${birth_date};;
+  }
   dimension: club {
     type: string
     sql: ${TABLE}."CLUB" ;;
