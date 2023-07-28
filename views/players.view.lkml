@@ -27,7 +27,7 @@ view: players {
       dateadd(year, datediff(year, ${birth_raw}, getdate()), ${birth_year})
       else
       dateadd(year, datediff(year, ${birth_raw}, getdate()), ${birth_year}+1)
-    ;;
+      end ;;
   }
   dimension: next_birthday {
     type: duration_day
