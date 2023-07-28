@@ -22,7 +22,7 @@ view: players {
     sql:
     case
      when
-      ${birth_raw} > getdate())
+      ${birth_date} > getdate())
       then
       dateadd(year, datediff(year, ${birth_raw}, getdate()), ${birth_year})
       else
@@ -32,7 +32,7 @@ view: players {
   dimension: next_birthday {
     type: duration_day
     sql_start: getdate();;
-    sql_end: ${next_birth_date}_birth_date}+1;;
+    sql_end: ${next_birth_date}+1;;
   }
   dimension: club {
     type: string
