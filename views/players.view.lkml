@@ -22,12 +22,12 @@ view: players {
     sql:
     case
      when
-      datediff(day, ${birth_date}, getdate()) > 0
+      datediff(day, ${birth_raw}, getdate()) > 0
       then
       dateadd(year, datediff(year, ${birth_raw}, getdate()), ${birth_year})
       else
       dateadd(year, datediff(year, ${birth_raw}, getdate()), ${birth_year}+1)
-      end ;;
+    end ;;
   }
   dimension: next_birthday {
     type: duration_day
