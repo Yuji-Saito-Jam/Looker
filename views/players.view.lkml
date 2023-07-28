@@ -22,7 +22,7 @@ view: players {
     sql:
     case
      when
-      ${birth_date} > getdate())
+      datediff(day, ${birth_date}, getdate()) > 0
       then
       dateadd(year, datediff(year, ${birth_raw}, getdate()), ${birth_year})
       else
