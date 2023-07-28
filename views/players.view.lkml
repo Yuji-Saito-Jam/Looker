@@ -14,17 +14,25 @@ view: players {
     datatype: date
     sql: ${TABLE}."BIRTH" ;;
   }
-  dimension_group: this_y_birth {
+  dimension_group: next_birth {
     type: time
     timeframes: [raw, date, week, month, quarter, year]
     convert_tz: no
     datatype: date
-    sql: dateadd(year , datediff(day, ${birth_raw}, getdate()), ${birth_raw})   ;;
+    sql:
+    case
+     when
+      ${birth_raw} > getdate())
+      then
+      dateadd(year, datediff(year, ${birth_raw}, getdate()), ${birth_year})
+      else
+      dateadd(year, datediff(year, ${birth_raw}, getdate()), ${birth_year}+1)
+    ;;
   }
   dimension: next_birthday {
     type: duration_day
     sql_start: getdate();;
-    sql_end: ${this_y_birth_date}+1;;
+    sql_end: ${next_birth_date}_birth_date}+1;;
   }
   dimension: club {
     type: string
