@@ -25,4 +25,11 @@ view: goals {
     type: count
     drill_fields: [id, pairings.id, players.name, players.id]
   }
+
+  measure: count_goal_per_sum  {
+    label: "ゴール割合"
+    type: percent_of_total
+    sql: ${count} ;;
+    direction: "column"
+  }
 }
